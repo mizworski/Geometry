@@ -1,8 +1,6 @@
 #include "geometry.h"
 
-Position::Position(int x, int y) {
-
-}
+Position::Position(int x, int y) : x_(x), y_(y) {}
 
 bool Position::operator==(const Position &rhs) {
     return false;
@@ -17,24 +15,35 @@ Position &Position::operator+=(const Position &rhs) {
 }
 
 int Position::x() const {
-    return 0;
+    return x_;
 }
 
 int Position::y() const {
-    return 0;
+    return y_;
 }
 
-Position &Position::reflection() const {
-    return <#initializer#>;
+Position Position::reflection() const {
+    return Position(x_, y_);
+}
+
+Position &f1() {
+    static Position x = Position(1,1);
+    return x;
+}
+
+Position &f2() {
+    return *new Position(1,1);
+}
+
+Position f3() {
+    return Position(1,1);
 }
 
 const Position &Position::origin() {
     return <#initializer#>;
 }
 
-Vector::Vector(int x, int y) {
-
-}
+Vector::Vector(int x, int y) : x_(x), y_(y) {}
 
 bool Vector::operator!=(const Vector &rhs) {
     return false;
@@ -106,13 +115,10 @@ std::pair<Rectangle &, Rectangle &> Rectangle::split_vertically(int place) {
     return std::pair<Rectangle &, Rectangle &>();
 }
 
-Rectangles::Rectangles() {
+Rectangles::Rectangles() : rectangles_(std::vector<Rectangle>()) {}
 
-}
-
-Rectangles::Rectangles(const std::initializer_list<Rectangle> &rectangles) {
-
-}
+Rectangles::Rectangles(const std::initializer_list<Rectangle> &rectangles) :
+        rectangles_(std::vector<Rectangle>(rectangles)) {}
 
 bool Rectangles::operator==(const Rectangles &rhs) const {
     return false;
@@ -131,7 +137,7 @@ const Rectangle &Rectangles::operator[](int index) const {
 }
 
 size_t Rectangles::size() const {
-    return 0;
+    return rectangles_.size();
 }
 
 Rectangles &Rectangles::split_horizontally(int place) {

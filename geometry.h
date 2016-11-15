@@ -1,7 +1,7 @@
 #ifndef GEOMETRY_GEOMETRY_H
 #define GEOMETRY_GEOMETRY_H
 
-#include <utility>
+//#include <utility>
 #include <vector>
 #include <cstddef>
 
@@ -16,7 +16,7 @@ public :
     static const Position &origin();
     int x() const;
     int y() const;
-    Position &reflection() const;
+    Position reflection() const;
 private:
     int x_;
     int y_;
@@ -72,10 +72,30 @@ public:
     const Rectangle &operator[](int index) const; //todo sprawdz czy nie trzeba nie-const ref
 
     size_t size() const;
-    Rectangles& split_horizontally(int place);
-    Rectangles& split_vertically(int place);
+    Rectangles &split_horizontally(int place);
+    Rectangles &split_vertically(int place);
 private:
     std::vector<Rectangle> rectangles_;
 };
+
+Vector &operator+(const Vector &lhs, const Vector &rhs);
+Vector &&operator+(Vector &&lhs, const Vector &rhs);
+Vector &&operator+(const Vector &lhs, Vector &&rhs);
+Vector &&operator+(Vector &&lhs, Vector &&rhs);
+
+Position &operator+(const Position &lhs, const Vector &rhs);
+Position &&operator+(Position &&lhs, const Vector &rhs);
+Position &operator+(const Vector &lhs, const Position &rhs);
+Position &&operator+(const Vector &lhs, Position &&rhs);
+
+Rectangle &operator+(const Rectangle &lhs, const Vector &rhs);
+Rectangle &&operator+(Rectangle &&lhs, const Vector &rhs);
+Rectangle &operator+(const Vector &lhs, const Rectangle &rhs);
+Rectangle &&operator+(const Vector &lhs, Rectangle &&rhs);
+
+Rectangles &operator+(const Rectangles &lhs, const Vector &rhs);
+Rectangles &&operator+(Rectangles &&lhs, const Vector &rhs);
+Rectangles &operator+(const Vector &lhs, const Rectangles &rhs);
+Rectangles &&operator+(const Vector &lhs, Rectangles &&rhs);
 
 #endif //GEOMETRY_GEOMETRY_H
