@@ -3,11 +3,11 @@
 
 Position::Position(int x, int y) : x_(x), y_(y) {}
 
-bool Position::operator==(const Position &rhs) {
+bool Position::operator==(const Position &rhs) const {
     return x_ == rhs.x_ && y_ == rhs.y_;
 }
 
-bool Position::operator!=(const Position &rhs) {
+bool Position::operator!=(const Position &rhs) const {
     return !(*this == rhs);
 }
 
@@ -30,17 +30,17 @@ Position Position::reflection() const {
 }
 
 const Position &Position::origin() {
-    static Position origin(0, 0);
+    static const Position origin(0, 0);
     return origin;
 }
 
 Vector::Vector(int x, int y) : x_(x), y_(y) {}
 
-bool Vector::operator==(const Vector &rhs) {
+bool Vector::operator==(const Vector &rhs) const {
     return x_ == rhs.x_ && y_ == rhs.y_;
 }
 
-bool Vector::operator!=(const Vector &rhs) {
+bool Vector::operator!=(const Vector &rhs) const {
     return !(*this == rhs);
 }
 
@@ -112,7 +112,7 @@ std::pair<Rectangle, Rectangle> Rectangle::split_horizontally(int place) {
 std::pair<Rectangle, Rectangle> Rectangle::split_vertically(int place) {
     assert(place >= 0 && place <= width_);
 
-    Vector v(0, place);
+    Vector v(place, 0);
     Rectangle top(width_ - place, height_, position_ + v);
     Rectangle bottom(place, height_, position_);
     return std::pair<Rectangle, Rectangle>(bottom, top);
@@ -120,6 +120,7 @@ std::pair<Rectangle, Rectangle> Rectangle::split_vertically(int place) {
 
 Rectangles::Rectangles() : rectangles_(std::vector<Rectangle>()) {}
 
+/*
 Rectangles::Rectangles(const std::initializer_list<Rectangle> &rectangles) :
         rectangles_(std::vector<Rectangle>(rectangles)) {}
 
@@ -150,6 +151,7 @@ Rectangles &Rectangles::split_horizontally(int place) {
 Rectangles &Rectangles::split_vertically(int place) {
     return <#initializer#>;
 }
+*/
 
 Position operator+(const Position &lhs, const Vector &rhs) {
     Position result(lhs);

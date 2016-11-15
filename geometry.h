@@ -1,38 +1,37 @@
 #ifndef GEOMETRY_GEOMETRY_H
 #define GEOMETRY_GEOMETRY_H
 
-//#include <utility>
 #include <vector>
 #include <cstddef>
+
+class Vector {
+public:
+    Vector(int x, int y);
+
+    bool operator==(const Vector &rhs) const;
+    bool operator!=(const Vector &rhs) const;
+    Vector &operator+=(const Vector &rhs);
+
+    int x() const;
+    int y() const;
+    Vector reflection() const;
+private:
+    int x_;
+    int y_;
+};
 
 class Position {
 public :
     Position(int x, int y);
 
-    bool operator==(const Position &rhs);
-    bool operator!=(const Position &rhs);
+    bool operator==(const Position &rhs) const;
+    bool operator!=(const Position &rhs) const;
     Position &operator+=(const Vector &rhs);
 
     static const Position &origin();
     int x() const;
     int y() const;
     Position reflection() const;
-private:
-    int x_;
-    int y_;
-};
-
-class Vector {
-public:
-    Vector(int x, int y);
-
-    bool operator==(const Vector &rhs);
-    bool operator!=(const Vector &rhs);
-    Vector &operator+=(const Vector &rhs);
-
-    int x() const;
-    int y() const;
-    Vector reflection() const;
 private:
     int x_;
     int y_;
