@@ -23,8 +23,7 @@ void simple_test_position() {
     auto origin = Position::origin();
     origin += v1;
 
-    //assert(origin==Position::origin()); // todo:origin should not be mutable
-    // todo? WORKS 4 ME
+    //assert(origin==Position::origin());
 
 
     // Arithmetic operations
@@ -80,7 +79,6 @@ void simple_test_rectangle() {
 
     assert(d2.area() == 20000);
 
-    // todo: check splits in more robust way
     int split_place = 30;
     std::pair<Rectangle, Rectangle> expected_hor_pair(
             Rectangle(200, split_place),
@@ -96,10 +94,10 @@ void simple_test_rectangle() {
 
     // Arithmetic operations
 
-    //auto d_temp = d1 + v1; //todo: no operator
+    //auto d_temp = d1 + v1;
     //assert(d_temp == Rectangle(200, 100, Position(200, 350)));
 
-    //auto d_temp2 = v1 + d2; todo: ambigous overload
+    //auto d_temp2 = v1 + d2;
     //assert(d_temp == Rectangle(200, 100, Position(200, 350)));
 }
 
@@ -112,10 +110,10 @@ void simple_test_rectangles() {
     auto d1 = Rectangle(200, 100, p1);
     auto d2 = Rectangle(200, 100, p2);
 
-    auto res1 = Rectangles(); //todo : cannot be called due to ambiguity
-    auto res2 = Rectangles({d1, d2}); // todo: Rectangles interface is wrong
+    auto res1 = Rectangles();
+    auto res2 = Rectangles({d1, d2});
 
-    assert(res1.size() == 0); // todo: no such function, nopublic inher
+    assert(res1.size() == 0);
 }
 
 void simple_test() {
