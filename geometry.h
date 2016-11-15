@@ -78,24 +78,16 @@ private:
     std::vector<Rectangle> rectangles_;
 };
 
-Vector &operator+(const Vector &lhs, const Vector &rhs);
-Vector &&operator+(Vector &&lhs, const Vector &rhs);
-Vector &&operator+(const Vector &lhs, Vector &&rhs);
-Vector &&operator+(Vector &&lhs, Vector &&rhs);
+Position operator+(const Position &lhs, const Vector &rhs);
+Position operator+(const Vector &lhs, const Position &rhs);
 
-Position &operator+(const Position &lhs, const Vector &rhs);
-Position &&operator+(Position &&lhs, const Vector &rhs);
-Position &operator+(const Vector &lhs, const Position &rhs);
-Position &&operator+(const Vector &lhs, Position &&rhs);
+Vector operator+(const Vector &lhs, const Vector &rhs);
 
-Rectangle &operator+(const Rectangle &lhs, const Vector &rhs);
-Rectangle &&operator+(Rectangle &&lhs, const Vector &rhs);
-Rectangle &operator+(const Vector &lhs, const Rectangle &rhs);
-Rectangle &&operator+(const Vector &lhs, Rectangle &&rhs);
+Rectangle operator+(const Rectangle &lhs, const Vector &rhs);
 
-Rectangles &operator+(const Rectangles &lhs, const Vector &rhs);
-Rectangles &&operator+(Rectangles &&lhs, const Vector &rhs);
-Rectangles &operator+(const Vector &lhs, const Rectangles &rhs);
-Rectangles &&operator+(const Vector &lhs, Rectangles &&rhs);
+Rectangles operator+(const Rectangles &lhs, const Vector &rhs);
+Rectangles operator+(Rectangles &&lhs, const Vector &rhs);
+Rectangles operator+(const Vector &lhs, const Rectangles &rhs);
+Rectangles operator+(const Vector &lhs, Rectangles &&rhs);
 
 #endif //GEOMETRY_GEOMETRY_H

@@ -150,3 +150,27 @@ Rectangles &Rectangles::split_horizontally(int place) {
 Rectangles &Rectangles::split_vertically(int place) {
     return <#initializer#>;
 }
+
+Position operator+(const Position &lhs, const Vector &rhs) {
+    Position result(lhs);
+    result += rhs;
+    return result;
+}
+
+Position operator+(const Vector &lhs, const Position &rhs) {
+    Position result(rhs);
+    result += lhs;
+    return result;
+}
+
+Vector operator+(const Vector &lhs, const Vector &rhs) {
+    Vector result(lhs);
+    result += rhs;
+    return result;
+}
+
+Rectangle operator+(const Rectangle &lhs, const Vector &rhs) {
+    Rectangle result(lhs);
+    result += rhs;
+    return result;
+}
