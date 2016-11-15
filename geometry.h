@@ -11,7 +11,7 @@ public :
 
     bool operator==(const Position &rhs);
     bool operator!=(const Position &rhs);
-    Position &operator+=(const Position &rhs);
+    Position &operator+=(const Vector &rhs);
 
     static const Position &origin();
     int x() const;
@@ -32,7 +32,7 @@ public:
 
     int x() const;
     int y() const;
-    Vector &reflection() const;
+    Vector reflection() const;
 private:
     int x_;
     int y_;
@@ -40,7 +40,7 @@ private:
 
 class Rectangle {
 public:
-    Rectangle(int width, int height, Position pos);
+    Rectangle(int width, int height, const Position &pos);
     Rectangle(int width, int height);
 
     bool operator==(const Rectangle &rhs) const;
@@ -50,11 +50,11 @@ public:
     int width() const;
     int height() const;
     const Position &pos() const;
-    Rectangle &reflection() const;
+    Rectangle reflection() const;
     int area() const;
 
-    std::pair<Rectangle &, Rectangle &> split_horizontally(int place);
-    std::pair<Rectangle &, Rectangle &> split_vertically(int place);
+    std::pair<Rectangle, Rectangle> split_horizontally(int place);
+    std::pair<Rectangle, Rectangle> split_vertically(int place);
 private:
     int width_;
     int height_;
