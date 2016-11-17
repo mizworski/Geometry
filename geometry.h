@@ -14,7 +14,9 @@ public:
 
     int x() const;
     int y() const;
+    
     Vector reflection() const;
+    
 private:
     int x_;
     int y_;
@@ -28,10 +30,12 @@ public :
     bool operator!=(const Position &rhs) const;
     Position &operator+=(const Vector &rhs);
 
-    static const Position &origin();
     int x() const;
     int y() const;
+    
+    static const Position &origin();
     Position reflection() const;
+    
 private:
     int x_;
     int y_;
@@ -49,11 +53,13 @@ public:
     int width() const;
     int height() const;
     const Position &pos() const;
+    
     Rectangle reflection() const;
     int area() const;
 
     std::pair<Rectangle, Rectangle> split_horizontally(int place);
     std::pair<Rectangle, Rectangle> split_vertically(int place);
+    
 private:
     int width_;
     int height_;
@@ -68,13 +74,17 @@ public:
     bool operator==(const Rectangles &rhs) const;
     bool operator!=(const Rectangles &rhs) const;
     Rectangles &operator+=(const Vector &rhs);
-    const Rectangle &operator[](int index) const; //todo sprawdz czy nie trzeba nie-const ref
+    Rectangle &operator[](size_t index);
 
     size_t size() const;
-    Rectangles &split_horizontally(int place);
-    Rectangles &split_vertically(int place);
+    
+    Rectangles &split_horizontally(size_t idx, int place);
+    Rectangles &split_vertically(size_t idx, int place);
+    
 private:
     std::vector<Rectangle> rectangles_;
+    
+    Rectangles &split(size_t idx, int place, bool horizontal);
 };
 
 Position operator+(const Position &lhs, const Vector &rhs);
@@ -88,5 +98,8 @@ Rectangles operator+(const Rectangles &lhs, const Vector &rhs);
 Rectangles operator+(Rectangles &&lhs, const Vector &rhs);
 Rectangles operator+(const Vector &lhs, const Rectangles &rhs);
 Rectangles operator+(const Vector &lhs, Rectangles &&rhs);
+
+Rectangle merge_horizontally(const Rectangle &rect1, const Rectangle &rect2);
+Rectangle merge_vertically(const Rectangle &rect1, const Rectangle &rect2);
 
 #endif //GEOMETRY_GEOMETRY_H
