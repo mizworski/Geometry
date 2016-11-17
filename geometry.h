@@ -14,9 +14,9 @@ public:
 
     int x() const;
     int y() const;
-    
+
     Vector reflection() const;
-    
+
 private:
     int x_;
     int y_;
@@ -32,10 +32,10 @@ public :
 
     int x() const;
     int y() const;
-    
+
     static const Position &origin();
     Position reflection() const;
-    
+
 private:
     int x_;
     int y_;
@@ -53,13 +53,13 @@ public:
     int width() const;
     int height() const;
     const Position &pos() const;
-    
+
     Rectangle reflection() const;
     int area() const;
 
     std::pair<Rectangle, Rectangle> split_horizontally(int place);
     std::pair<Rectangle, Rectangle> split_vertically(int place);
-    
+
 private:
     int width_;
     int height_;
@@ -79,13 +79,13 @@ public:
     Rectangle &operator[](size_t index);
 
     size_t size() const;
-    
+
     Rectangles &split_horizontally(size_t idx, int place);
     Rectangles &split_vertically(size_t idx, int place);
-    
+
 private:
     std::vector<Rectangle> rectangles_;
-    
+
     Rectangles &split(size_t idx, int place, bool horizontal);
 };
 
@@ -95,6 +95,7 @@ Position operator+(const Vector &lhs, const Position &rhs);
 Vector operator+(const Vector &lhs, const Vector &rhs);
 
 Rectangle operator+(const Rectangle &lhs, const Vector &rhs);
+Rectangle operator+(const Vector &lhs, const Rectangle &rhs);
 
 Rectangles operator+(const Rectangles &lhs, const Vector &rhs);
 Rectangles operator+(Rectangles &&lhs, const Vector &rhs);
