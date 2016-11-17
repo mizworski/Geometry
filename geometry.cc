@@ -233,6 +233,46 @@ Rectangle operator+(const Rectangle &lhs, const Vector &rhs) {
     return result;
 }
 
+Rectangles operator+(const Rectangles &lhs, const Vector &rhs) {
+    Rectangles new_rect = Rectangles(lhs);
+    
+    for (size_t i = 0; i < lhs.size(); i++) {
+        new_rect[i] += rhs;
+    }
+    
+    return new_rect;
+}
+
+Rectangles operator+(Rectangles &&lhs, const Vector &rhs) {
+    Rectangles new_rect = Rectangles(lhs);
+    
+    for (size_t i = 0; i < lhs.size(); i++) {
+        new_rect[i] += rhs;
+    }
+    
+    return new_rect;
+}
+
+Rectangles operator+(const Vector &lhs, const Rectangles &rhs) {
+    Rectangles new_rect = Rectangles(rhs);
+    
+    for (size_t i = 0; i < rhs.size(); i++) {
+        new_rect[i] += lhs;
+    }
+    
+    return new_rect;
+}
+
+Rectangles operator+(const Vector &lhs, Rectangles &&rhs) {
+    Rectangles new_rect = Rectangles(rhs);
+    
+    for (size_t i = 0; i < rhs.size(); i++) {
+        new_rect[i] += lhs;
+    }
+    
+    return new_rect;
+}
+
 Rectangle merge_horizontally(const Rectangle &rect1, const Rectangle &rect2) {
     assert(rect1.width() == rect2.width());
     assert(rect1.pos() + Vector(0, rect1.height()) == rect2.pos());
