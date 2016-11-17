@@ -143,6 +143,18 @@ Rectangles::Rectangles(const Rectangles &other) :
 Rectangles::Rectangles(Rectangles &&other) :
         rectangles_(std::move(other.rectangles_)) {}
 
+Rectangles &Rectangles::operator=(const Rectangles &other) {
+    rectangles_ = other.rectangles_;
+    
+    return *this;
+}
+
+Rectangles &Rectangles::operator=(Rectangles &&other) {
+    rectangles_ = std::move(other.rectangles_);
+    
+    return *this;
+}
+
 bool Rectangles::operator==(const Rectangles &rhs) const {
     if (this->size() != rhs.size())
         return false;

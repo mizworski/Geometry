@@ -110,6 +110,8 @@ public:
 
     bool operator==(const Rectangles &rhs) const;
     bool operator!=(const Rectangles &rhs) const;
+    Rectangles &operator=(const Rectangles &other);
+    Rectangles &operator=(Rectangles &&other);
     Rectangles &operator+=(const Vector &rhs);
     Rectangle &operator[](size_t index);
 
