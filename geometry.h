@@ -15,6 +15,10 @@ public:
     int x() const;
     int y() const;
 
+    /**
+     * Reflects vector over x = y axis.
+     * @return reflected vector
+     */
     Vector reflection() const;
 
 private:
@@ -33,7 +37,16 @@ public :
     int x() const;
     int y() const;
 
+    /**
+     * Gets origin of coordinate system.
+     * @return origin of coordinate system
+     */
     static const Position &origin();
+
+    /**
+     * Reflects point over x = y axis.
+     * @return reflected point
+     */
     Position reflection() const;
 
 private:
@@ -54,10 +67,32 @@ public:
     int height() const;
     const Position &pos() const;
 
+    /**
+     * Reflects rectangle over x = y axis.
+     * @return reflected rectangle
+     */
     Rectangle reflection() const;
+
+    /**
+     * Calculates area of rectangle.
+     * @return area of rectangle
+     */
     int area() const;
 
+    /**
+     * Splits rectangle into two with heights of place and rectangle's height decreased by place.
+     * Throws error if height is incorrect.
+     * @param place height of first rectangle
+     * @return pair of splitted rectangles
+     */
     std::pair<Rectangle, Rectangle> split_horizontally(int place);
+
+    /**
+     * Splits rectangle into two with widths of place and rectangle's width decreased by place.
+     * Throws error if width is incorrect.
+     * @param place width of first rectangle
+     * @return pair of splitted rectangles
+     */
     std::pair<Rectangle, Rectangle> split_vertically(int place);
 
 private:

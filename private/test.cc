@@ -23,8 +23,8 @@ void simple_test_position() {
     p1 += v1;
     assert(p1 == Position(200, 350));
 
-    auto origin = Position::origin();
-    origin += v1;
+    //auto& origin = Position::origin();
+    //origin += v1;
 
     //assert(origin==Position::origin()); //todo jak zrobic zeby byl immutable
 
