@@ -138,6 +138,12 @@ Rectangles::Rectangles() : rectangles_(std::vector<Rectangle>()) {}
 Rectangles::Rectangles(const std::initializer_list<Rectangle> &rectangles) :
         rectangles_(std::vector<Rectangle>(rectangles)) {}
 
+Rectangles::Rectangles(const Rectangles &other) :
+        rectangles_(other.rectangles_) {}
+
+Rectangles::Rectangles(Rectangles &&other) :
+        rectangles_(std::move(other.rectangles_)) {}
+
 bool Rectangles::operator==(const Rectangles &rhs) const {
     if (this->size() != rhs.size())
         return false;

@@ -70,6 +70,8 @@ class Rectangles {
 public:
     Rectangles();
     Rectangles(const std::initializer_list<Rectangle> &rectangles);
+    Rectangles(const Rectangles &other);
+    Rectangles(Rectangles &&other);
 
     bool operator==(const Rectangles &rhs) const;
     bool operator!=(const Rectangles &rhs) const;
