@@ -128,7 +128,8 @@ std::pair<Rectangle, Rectangle> Rectangle::split_vertically(int place) {
 
     auto split_reflected = reflected.split_horizontally(place);
 
-    return std::pair<Rectangle, Rectangle>(split_reflected.first.reflection(), split_reflected.second.reflection());
+    return std::pair<Rectangle, Rectangle>
+            (split_reflected.first.reflection(), split_reflected.second.reflection());
 }
 
 Rectangles::Rectangles() : rectangles_(std::vector<Rectangle>()) {}
@@ -176,10 +177,6 @@ size_t Rectangles::size() const {
     return rectangles_.size();
 }
 
-/* Splits one of the rectangles.
- * Whether the cut is horizontal or vertical,
- * is defined by 'horizontal' variable.
- */
 Rectangles &Rectangles::split(size_t idx, int place, bool horizontal) {
     assert(idx < this->size());
 

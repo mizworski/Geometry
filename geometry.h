@@ -115,12 +115,35 @@ public:
 
     size_t size() const;
 
+    /**
+     * Splits one of the rectangles with a horizontal cut.
+     * Throws error if place is incorrect.
+     * @param idx index of splitted rectangle
+     * @param place position of cut
+     * @return new collection of rectangles, ordered as before, with the one splitted
+     */
     Rectangles &split_horizontally(size_t idx, int place);
+    
+    /**
+     * Splits one of the rectangles with a vertical cut.
+     * Throws error if place is incorrect.
+     * @param idx index of splitted rectangle
+     * @param place position of cut
+     * @return new collection of rectangles, ordered as before, with the one splitted
+     */
     Rectangles &split_vertically(size_t idx, int place);
 
 private:
     std::vector<Rectangle> rectangles_;
 
+    /**
+     * Splits one of the rectangles.
+     * Throws error if place is incorrect.
+     * @param idx index of splitted rectangle
+     * @param place position of cut
+     * @param horizontal shows whether the cut is horizontal or vertical
+     * @return new collection of rectangles, ordered as before, with the one splitted
+     */
     Rectangles &split(size_t idx, int place, bool horizontal);
 };
 
@@ -137,7 +160,24 @@ Rectangles operator+(Rectangles &&lhs, const Vector &rhs);
 Rectangles operator+(const Vector &lhs, const Rectangles &rhs);
 Rectangles operator+(const Vector &lhs, Rectangles &&rhs);
 
+/**
+ * Merges two recangles that share the same horizontal edge.
+ * Throws error if upper edge of the first rectangle is not bottom
+ * edge of the second rectangle.
+ * @param rect1 first rectangle to merge
+ * @param rect2 second rectangle to merge
+ * @return merged rectangle
+ */
 Rectangle merge_horizontally(const Rectangle &rect1, const Rectangle &rect2);
+
+/**
+ * Merges two recangles that share the same vertical edge.
+ * Throws error if right edge of the first rectangle is not left
+ * edge of the second rectangle.
+ * @param rect1 first rectangle to merge
+ * @param rect2 second rectangle to merge
+ * @return merged rectangle
+ */
 Rectangle merge_vertically(const Rectangle &rect1, const Rectangle &rect2);
 
 #endif //GEOMETRY_GEOMETRY_H
