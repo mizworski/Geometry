@@ -261,6 +261,10 @@ int main() {
         rectangles1 += v1;
         assert(rectangles11 == rectangles1);
 
+        Rectangles recs;
+
+        recs = rectangles1;
+
 
         Rectangles rectangles22({rect1, Rectangle(20, 10), Rectangle(20, 20, Position(0, 10)), rect3});
         rectangles2.split_horizontally(1, 10);

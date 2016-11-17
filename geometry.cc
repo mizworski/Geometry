@@ -67,11 +67,17 @@ const Position &Position::origin() {
     return origin;
 }
 
-Rectangle::Rectangle(int width, int height, const Position &pos)
-        : width_(width), height_(height), position_(pos) {}
+Rectangle::Rectangle(int width, int height, const Position &pos) :
+        width_(width), height_(height), position_(pos) {}
 
-Rectangle::Rectangle(int width, int height)
-        : width_(width), height_(height), position_(Position(0, 0)) {}
+Rectangle::Rectangle(int width, int height) :
+        width_(width), height_(height), position_(Position(0, 0)) {}
+
+Rectangle::Rectangle(const Rectangle &other) :
+        width_(other.width_), height_(other.height_), position_(other.position_) {}
+
+Rectangle::Rectangle(Rectangle &&other) :
+        width_(other.width_), height_(other.height_), position_(std::move(other.position_)) {}
 
 bool Rectangle::operator==(const Rectangle &rhs) const {
     return width_ == rhs.width() &&
@@ -81,6 +87,22 @@ bool Rectangle::operator==(const Rectangle &rhs) const {
 
 bool Rectangle::operator!=(const Rectangle &rhs) const {
     return !(*this == rhs);
+}
+
+Rectangle &Rectangle::operator=(const Rectangle &rhs) {
+    width_ = rhs.width_;
+    height_ = rhs.height_;
+    position_ = rhs.position_;
+
+    return *this;
+}
+
+Rectangle &Rectangle::operator=(Rectangle &&rhs) {
+    width_ = rhs.width_;
+    height_ = rhs.height_;
+    position_ = std::move(rhs.position_);
+
+    return *this;
 }
 
 Rectangle &Rectangle::operator+=(const Vector &rhs) {

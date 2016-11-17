@@ -58,9 +58,14 @@ class Rectangle {
 public:
     Rectangle(int width, int height, const Position &pos);
     Rectangle(int width, int height);
+    Rectangle(const Rectangle &other);
+    Rectangle(Rectangle &&other);
+
 
     bool operator==(const Rectangle &rhs) const;
     bool operator!=(const Rectangle &rhs) const;
+    Rectangle &operator=(const Rectangle &rhs);
+    Rectangle &operator=(Rectangle &&rhs);
     Rectangle &operator+=(const Vector &rhs);
 
     int width() const;
@@ -125,7 +130,7 @@ public:
      * @return new collection of rectangles, ordered as before, with the one splitted
      */
     Rectangles &split_horizontally(size_t idx, int place);
-    
+
     /**
      * Splits one of the rectangles with a vertical cut.
      * Throws error if place is incorrect.
